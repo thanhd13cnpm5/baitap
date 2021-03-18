@@ -15,7 +15,14 @@ def getLogLine():
     while True:
         # đọc từng dòng tròng vòng lặp và tăng biến đếm sau mỗi lần đọc
         txt = f.readline().rstrip("\n")
+        # kiểm tra dòng tồn tại không
+        if txt == "":
+            if dem < line:
+                # trả ra lỗi không tồn tại dòng nhập vào
+                return jsonify("ERROR: dòng nhập vào cần bé hơn " + str(dem))
+                break
         dem += 1
+
         # kiểm tra dòng mà người dùng nhập vào khớp với biến đếm
         if dem == line:
             # tìm vị trí các ký tự
